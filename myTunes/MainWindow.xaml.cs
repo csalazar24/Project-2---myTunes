@@ -4,11 +4,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Data;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Collections;
+using System.Resources;
+using System.Collections.ObjectModel;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
@@ -20,12 +24,28 @@ namespace myTunes
     /// </summary>
     public partial class MainWindow : Window
     {
+        private readonly MusicRepo library;
+        private readonly MediaPlayer mediaPlayer = new MediaPlayer();
         private List<Playlist> playlists = new List<Playlist>();
-        private MusicRepo library = new MusicRepo();
 
         public MainWindow()
         {
             InitializeComponent();
+
+            try
+            {
+                library = new MusicRepo();
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Error loading file: " + e.Message, "MiniPlayer", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+
+            // Places music from music.xml into the data grid
+            DataSet music = new DataSet();
+            music.ReadXml("music.xml");
+            myDataGrid.ItemsSource = music.Tables["song"].DefaultView;
         }
 
         private class Playlist

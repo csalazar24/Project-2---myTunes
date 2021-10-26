@@ -6,9 +6,9 @@
         xmlns:local="clr-namespace:myTunes"
         mc:Ignorable="d"
         Loaded="Window_Loaded"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="500" Width="800">
     <Grid>
-        <ListBox x:Name="myListBox" >
+        <ListBox x:Name="myListBox" VerticalAlignment="Top" Height="240">
             <ListBox.ItemTemplate >
                 <DataTemplate >
                     <StackPanel Orientation="Horizontal" >
@@ -17,5 +17,6 @@
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
+        <DataGrid x:Name="myDataGrid" VerticalAlignment="Bottom" Height="240"/>
     </Grid>
 </Window>
