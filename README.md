@@ -4,6 +4,7 @@
 
 1. Our Program is a WPF application that allows a user to organize and play songs.  Audio files can be added to and removed 
 from the app and organized into playlists.  Music and playlist data are stored in an XML file. 
+2. We met all the requirements of the Procrastination Penalty on time.
 
 
 | Criteria      | Teammate|
@@ -24,3 +25,6 @@ from the app and organized into playlists.  Music and playlist data are stored i
 | Control template/styles for Play and Stop buttons   |       |
 | Search for song   |     |
 | Git usage   |      |
+
+Christopher ~
+Gavin ~
