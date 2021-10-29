@@ -61,5 +61,20 @@ namespace myTunes
             playlists.AddRange(library.Playlists.Select(playlist => new Playlist { Name = playlist }));
             myListBox.ItemsSource = playlists;
         }
+
+        private void infoButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void addPlaylistButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void openButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

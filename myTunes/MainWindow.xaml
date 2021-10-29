@@ -6,9 +6,31 @@
         xmlns:local="clr-namespace:myTunes"
         mc:Ignorable="d"
         Loaded="Window_Loaded"
-        Title="MainWindow" Height="500" Width="800">
+        Title="MyTunes" Height="500" Width="800">
     <Grid>
-        <ListBox x:Name="myListBox" VerticalAlignment="Top" Height="240">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+
+        <ToolBar Grid.Row="0" Grid.ColumnSpan="2">
+            <Button x:Name="openButton" ToolTip="Open File" Click="openButton_Click">
+                <Image Source="File.png" Width="32" Height="32"/>
+            </Button>
+            <Button x:Name="addPlaylistButton" ToolTip="New Playlist" Click="addPlaylistButton_Click">
+                <Image Source="Addsong.png" Width="32" Height="32"/>
+            </Button>
+            <Button x:Name="infoButton" ToolTip="Info" Click="infoButton_Click">
+                <Image Source="Info.png" Width="32" Height="32"/>
+            </Button>
+        </ToolBar>
+
+        <ListBox x:Name="myListBox" Grid.Column="0" Grid.Row="1" Margin="10 0" >
             <ListBox.ItemTemplate >
                 <DataTemplate >
                     <StackPanel Orientation="Horizontal" >
@@ -17,6 +39,10 @@
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
-        <DataGrid x:Name="myDataGrid" VerticalAlignment="Bottom" Height="240"/>
+
+        <DataGrid x:Name="myDataGrid" Grid.Column="1" Grid.Row="1"/>
+
+
+
     </Grid>
 </Window>
