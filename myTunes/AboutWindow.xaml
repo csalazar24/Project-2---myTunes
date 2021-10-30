@@ -1,0 +1,28 @@
+﻿<Window x:Class="myTunes.AboutWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:myTunes"
+        mc:Ignorable="d"
+        Title="About" Height="357" Width="617">
+    <Grid>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+
+        <Label  Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center"
+               FontSize="60" FontWeight="Bold">myTunes</Label>
+
+        <Label  Grid.Row="0" HorizontalAlignment="Center" FontSize="20">By Christopher Salazar and Gavin McCulley</Label>
+
+        <Button Grid.Row="1" HorizontalAlignment="Center" Padding="30 2" Margin="40" Click="Button_Click">
+            OK
+        </Button>
+
+    </Grid>
+</Window>

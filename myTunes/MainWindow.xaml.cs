@@ -64,7 +64,9 @@ namespace myTunes
 
         private void infoButton_Click(object sender, RoutedEventArgs e)
         {
+            var aboutWindow = new AboutWindow();
 
+            aboutWindow.ShowDialog();
         }
 
         private void addPlaylistButton_Click(object sender, RoutedEventArgs e)
