@@ -79,5 +79,21 @@ namespace myTunes
         {
 
         }
+
+        private void playButton_Click(object sender, RoutedEventArgs e)
+        {
+            DataRowView dataRowView = myDataGrid.SelectedItem as DataRowView;
+            if (myDataGrid.SelectedItem != null)
+            {
+                int songId = Convert.ToInt32(dataRowView.Row.ItemArray[0]);
+                mediaPlayer.Open(new Uri(library.GetSong(songId).Filename));
+                mediaPlayer.Play();
+            }
+        }
+
+        private void stopButton_Click(object sender, RoutedEventArgs e)
+        {
+            mediaPlayer.Stop();
+        }
     }
 }
