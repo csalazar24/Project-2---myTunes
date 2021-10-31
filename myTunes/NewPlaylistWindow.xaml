@@ -13,7 +13,7 @@
                 <Label Margin="30,30,0,45" >Playlist Name:</Label>
                 <TextBox x:Name="newPlaylist" Margin="-10,35,20,45" Width="150"/>
             </DockPanel>
-            <DockPanel Height="28">
+            <DockPanel Height="30">
                 <Button Name ="saveButton" Margin="60,0,10,0" Width="90" Click="saveButton_Click">Save</Button>
                 <Button Name="cancelButton" Margin="10,0,60,0" Width="90" Click="cancelButton_Click">Cancel</Button>
             </DockPanel>

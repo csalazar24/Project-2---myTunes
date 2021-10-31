@@ -115,5 +115,11 @@ namespace myTunes
         {
             library.Save();
         }
+
+        private void removeButton_Click(object sender, RoutedEventArgs e)
+        {
+            RemoveSongWindow confirmRemove = new RemoveSongWindow();
+            confirmRemove.ShowDialog();
+        }
     }
 }

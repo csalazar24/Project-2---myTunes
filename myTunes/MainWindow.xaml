@@ -41,7 +41,16 @@
             </ListBox.ItemTemplate>
         </ListBox>
 
-        <DataGrid x:Name="myDataGrid" Grid.Column="1" Grid.Row="1" CanUserAddRows="False" IsReadOnly="True" SelectionMode="Single"/>
+        <DataGrid x:Name="myDataGrid" Grid.Column="1" Grid.Row="1" CanUserAddRows="False" IsReadOnly="True" SelectionMode="Single">
+            <DataGrid.ContextMenu>
+                <ContextMenu>
+                    <MenuItem Header="Play" Click="playButton_Click"></MenuItem>
+                    <MenuItem Name="removeButton"  Header="Remove" Click="removeButton_Click"></MenuItem>
+                </ContextMenu>
+            </DataGrid.ContextMenu>
+
+        </DataGrid>
+        
 
         <WrapPanel Grid.Row="1" Margin="10,316,10,10" Grid.Column="1" >
             <Button x:Name="playButton"  Content="Play" Width="70" Height="25" Margin="0,0,10,0" Click="playButton_Click"/>
