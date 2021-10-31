@@ -29,6 +29,7 @@ namespace myTunes
         private readonly MediaPlayer mediaPlayer = new MediaPlayer();
         private List<Playlist> playlists = new List<Playlist>();
 
+        private Playlist currentPlaylist;
         public MainWindow()
         {
             InitializeComponent();
@@ -72,7 +73,21 @@ namespace myTunes
 
         private void addPlaylistButton_Click(object sender, RoutedEventArgs e)
         {
+            NewPlaylistWindow newPlaylistForm = new NewPlaylistWindow();
+            newPlaylistForm.ShowDialog();
+            string result = newPlaylistForm.playlistAdded;
 
+            if (library.AddPlaylist(result))
+            {
+                playlists.Clear();
+                playlists = new List<Playlist>();
+
+                var allMusic = new Playlist { Name = "All Music"};
+                currentPlaylist = allMusic;
+                playlists.Add(allMusic);
+                playlists.AddRange(library.Playlists.Select(playlist => new Playlist { Name = playlist}));
+                myListBox.ItemsSource = playlists;
+            }
         }
 
         private void openButton_Click(object sender, RoutedEventArgs e)
