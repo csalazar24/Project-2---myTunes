@@ -9,20 +9,20 @@ from the app and organized into playlists.  Music and playlist data are stored i
 
 | Criteria      | Teammate|
 | ----------- | ----------- |
-| Show songs from All Music and playlists     |    |
+| Show songs from All Music and playlists     |   Christopher Salazar |
 | Songs in data grid  |       |
-| Play and stop song   |          |
-| Toolbar  |      |
+| Play and stop song   |     Christopher Salazar      |
+| Toolbar  |    Christopher Salazar   |
 | Add songs      |       |
 | Create playlist and add songs  |       |
 | Delete songs    |       |
-| Changes saved |      |
+| Changes saved |  Christopher Salazar    |
 | Windows resizable    |    |
-| About dialog box   |        |
+| About dialog box   |    Christopher Salazar    |
 | Use of MusicRepo   |    |
 | Coding practices   |    |
 | Rename and delete playlist   |   |
-| Control template/styles for Play and Stop buttons   |       |
+| Control template/styles for Play and Stop buttons   |   Christopher Salazar    |
 | Search for song   |     |
 | Git usage   |      |
 
