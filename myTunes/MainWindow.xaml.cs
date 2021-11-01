@@ -120,6 +120,26 @@ namespace myTunes
         {
             RemoveSongWindow confirmRemove = new RemoveSongWindow();
             confirmRemove.ShowDialog();
+
+            if (confirmRemove.RemoveConfirmation)
+            {
+                DataRowView rowView = myDataGrid.SelectedItem as DataRowView;
+                if (rowView != null)
+                {
+                    int songId = Convert.ToInt32(rowView.Row.ItemArray[0]);
+
+                    library.RemoveSongFromPlaylist(myDataGrid.SelectedIndex + 1, songId, currentPlaylist.Name);
+
+                    //library.DeleteSong(songId);
+
+                    myDataGrid.ItemsSource = null;
+
+                }
+            }
+            else
+            {
+                e.Handled = true;
+            }
         }
     }
 }

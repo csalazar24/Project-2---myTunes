@@ -19,18 +19,21 @@ namespace myTunes
     /// </summary>
     public partial class RemoveSongWindow : Window
     {
+        public bool RemoveConfirmation = false;
         public RemoveSongWindow()
         {
             InitializeComponent();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void Yes_Click(object sender, RoutedEventArgs e)
         {
+            RemoveConfirmation = true;
             Close();
         }
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
+        private void No_Click(object sender, RoutedEventArgs e)
         {
+            RemoveConfirmation = false;
             Close();
         }
     }
