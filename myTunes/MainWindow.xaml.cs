@@ -28,6 +28,7 @@ namespace myTunes
         private readonly MusicRepo library;
         private readonly MediaPlayer mediaPlayer = new MediaPlayer();
         private List<Playlist> playlists = new List<Playlist>();
+        private DataSet music = new DataSet();
 
         private Playlist currentPlaylist;
         public MainWindow()
@@ -45,7 +46,6 @@ namespace myTunes
             }
 
             // Places music from music.xml into the data grid
-            DataSet music = new DataSet();
             music.ReadXml("music.xml");
             myDataGrid.ItemsSource = music.Tables["song"].DefaultView;
         }
@@ -53,7 +53,6 @@ namespace myTunes
         private class Playlist
         {
             public string Name { get; set; }
-
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -139,6 +138,28 @@ namespace myTunes
             else
             {
                 e.Handled = true;
+            }
+        }
+
+        private void removeButton_Click2(object sender, RoutedEventArgs e)
+        {
+            var confirmRemove = new RemoveSongWindow();
+            confirmRemove.ShowDialog();
+            bool confirmed = confirmRemove.RemoveConfirmation;
+
+            // Delete song
+            if (confirmed)
+            {
+                // Remove the row matching the given ID
+                DataTable table = music.Tables["song"];
+                if (table != null)
+                {
+                    DataRow row = table.Rows[myDataGrid.SelectedIndex];
+                    if (row != null && library.DeleteSong((int)music.Tables["song"].Rows[myDataGrid.SelectedIndex][0]))
+                    {
+                        music.Tables["song"].Rows.Remove(row);
+                    }
+                }
             }
         }
     }
