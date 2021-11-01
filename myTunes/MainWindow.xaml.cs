@@ -46,6 +46,7 @@ namespace myTunes
             }
 
             // Places music from music.xml into the data grid
+            music.ReadXmlSchema("music.xsd");
             music.ReadXml("music.xml");
             myDataGrid.ItemsSource = music.Tables["song"].DefaultView;
         }
@@ -91,7 +92,17 @@ namespace myTunes
 
         private void openButton_Click(object sender, RoutedEventArgs e)
         {
-
+            Microsoft.Win32.OpenFileDialog openFileDialog = new Microsoft.Win32.OpenFileDialog();
+            openFileDialog.DefaultExt = ".mp3";
+            openFileDialog.Filter = "MP3 documents (.mp3)|*.mp3| M4A documents (.m4a)|*.m4a| WMA documents (.wma)|*.wma| WAV documents (.wav)|*.wav";
+            Nullable<bool> result = openFileDialog.ShowDialog();
+            if(result == true)
+            {
+                library.AddSong(openFileDialog.FileName.ToString());
+                library.Save();
+                music.Clear();
+                music.ReadXml("music.xml");
+            }
         }
 
         private void playButton_Click(object sender, RoutedEventArgs e)
