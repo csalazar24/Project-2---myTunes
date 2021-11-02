@@ -7,7 +7,28 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="AddSong.png" />
+    <None Remove="File.png" />
+    <None Remove="Info.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\AddSong.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\File.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="taglib-sharp-netstandard2.0" Version="2.1.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\Info.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
 
   <ItemGroup>

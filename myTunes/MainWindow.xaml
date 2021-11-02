@@ -21,13 +21,13 @@
 
         <ToolBar Grid.Row="0" Grid.ColumnSpan="2">
             <Button x:Name="openButton" ToolTip="Open File" Click="openButton_Click">
-                <Image Source="File.png" Width="32" Height="32"/>
+                <Image Source="Resources\File.png" Width="32" Height="32"/>
             </Button>
             <Button x:Name="addPlaylistButton" ToolTip="New Playlist" Click="addPlaylistButton_Click">
-                <Image Source="Addsong.png" Width="32" Height="32"/>
+                <Image Source="Resources\Addsong.png" Width="32" Height="32"/>
             </Button>
             <Button x:Name="infoButton" ToolTip="Info" Click="infoButton_Click">
-                <Image Source="Info.png" Width="32" Height="32"/>
+                <Image Source="Resources\Info.png" Width="32" Height="32"/>
             </Button>
         </ToolBar>
 
@@ -50,7 +50,7 @@
             </DataGrid.ContextMenu>
 
         </DataGrid>
-        
+
 
         <WrapPanel Grid.Row="1" Margin="10,10,10,10" Grid.Column="1" VerticalAlignment="Bottom" >
             <Button x:Name="playButton"  Content="Play" Width="70" Height="25" Margin="0,0,10,0" Click="playButton_Click" VerticalAlignment="Stretch"/>
