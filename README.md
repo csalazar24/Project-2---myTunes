@@ -17,7 +17,7 @@ from the app and organized into playlists.  Music and playlist data are stored i
 | Create playlist and add songs  |    Christopher Salazar   |
 | Delete songs    |       |
 | Changes saved |  Christopher Salazar    |
-| Windows resizable    |    |
+| Windows resizable    |  Gavin McCulley  |
 | About dialog box   |    Christopher Salazar    |
 | Use of MusicRepo   |  Christopher Salazar & Gavin McCulley  |
 | Coding practices   |  Christopher Salazar & Gavin McCulley  |
