@@ -67,7 +67,6 @@ namespace myTunes
         private void infoButton_Click(object sender, RoutedEventArgs e)
         {
             var aboutWindow = new AboutWindow();
-
             aboutWindow.ShowDialog();
         }
 
@@ -98,10 +97,16 @@ namespace myTunes
             Nullable<bool> result = openFileDialog.ShowDialog();
             if(result == true)
             {
-                library.AddSong(openFileDialog.FileName.ToString());
+                Song s = library.AddSong(openFileDialog.FileName.ToString());
                 library.Save();
                 music.Clear();
                 music.ReadXml("music.xml");
+
+                // Select newly added item in data grid
+                myDataGrid.Focus();
+                DataRow row = music.Tables["song"].Rows.Find(s.Id);
+                myDataGrid.SelectedIndex = music.Tables["song"].Rows.IndexOf(row);
+                myDataGrid.SelectedItem = myDataGrid.SelectedIndex;
             }
         }
 
@@ -137,13 +142,9 @@ namespace myTunes
                 if (rowView != null)
                 {
                     int songId = Convert.ToInt32(rowView.Row.ItemArray[0]);
-
                     library.RemoveSongFromPlaylist(myDataGrid.SelectedIndex + 1, songId, currentPlaylist.Name);
-
                     //library.DeleteSong(songId);
-
                     myDataGrid.ItemsSource = null;
-
                 }
             }
             else
@@ -183,9 +184,7 @@ namespace myTunes
                 (Math.Abs(diff.X) > SystemParameters.MinimumHorizontalDragDistance ||
                 Math.Abs(diff.Y) > SystemParameters.MinimumVerticalDragDistance))
             {
-
                 DragDrop.DoDragDrop(myDataGrid, (myDataGrid.Items[myDataGrid.SelectedIndex] as DataRowView)[0], DragDropEffects.Copy);
-
             }
         }
 
