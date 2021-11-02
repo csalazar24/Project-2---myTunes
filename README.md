@@ -13,7 +13,7 @@ from the app and organized into playlists.  Music and playlist data are stored i
 | Songs in data grid  |       |
 | Play and stop song   |     Christopher Salazar      |
 | Toolbar  |    Christopher Salazar   |
-| Add songs      |       |
+| Add songs      |   Gavin McCulley   |
 | Create playlist and add songs  |       |
 | Delete songs    |       |
 | Changes saved |  Christopher Salazar    |
