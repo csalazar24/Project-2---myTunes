@@ -188,5 +188,10 @@ namespace myTunes
 
             }
         }
+
+        private void myDataGrid_MouseMove(object sender, MouseEventArgs e)
+        {
+            startPoint = e.GetPosition(null);
+        }
     }
 }
