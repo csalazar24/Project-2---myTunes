@@ -32,6 +32,7 @@ namespace myTunes
         private DataSet music = new DataSet();
         private Point startPoint;
         private Playlist currentPlaylist;
+        private string selectedPlaylist;
         public MainWindow()
         {
             InitializeComponent();
@@ -134,7 +135,7 @@ namespace myTunes
             library.Save();
         }
 
-        private void removeButton_Click(object sender, RoutedEventArgs e)
+        private void removeButton_Click2(object sender, RoutedEventArgs e)
         {
             RemoveSongWindow confirmRemove = new RemoveSongWindow();
             confirmRemove.ShowDialog();
@@ -156,7 +157,7 @@ namespace myTunes
             }
         }
 
-        private void removeButton_Click2(object sender, RoutedEventArgs e)
+        private void removeButton_Click(object sender, RoutedEventArgs e)
         {
             var confirmRemove = new RemoveSongWindow();
             confirmRemove.ShowDialog();
@@ -170,15 +171,27 @@ namespace myTunes
                 if (table != null)
                 {
                     DataRow row = table.Rows[myDataGrid.SelectedIndex];
-                    if (row != null && library.DeleteSong((int)music.Tables["song"].Rows[myDataGrid.SelectedIndex][0]))
+                    if (myListBox.SelectedItem.ToString() == "All Music")
                     {
-                        music.Tables["song"].Rows.Remove(row);
+                        if (row != null && library.DeleteSong((int)music.Tables["song"].Rows[myDataGrid.SelectedIndex][0]))
+                        {
+                            music.Tables["song"].Rows.Remove(row);
+                        }
+                    }
+                    else
+                    {
+                        if (row != null)
+                        {
+                            library.RemoveSongFromPlaylist(myDataGrid.SelectedIndex, (int)music.Tables["song"].Rows[myDataGrid.SelectedIndex][0], myListBox.SelectedItem.ToString());
+                        }
                     }
                 }
             }
         }
 
-        private void myDataGrid_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+
+
+        private void myDataGrid_MouseMove(object sender, MouseEventArgs e)
         {
             var mousePos = e.GetPosition(null);
             Vector diff = startPoint - mousePos;
@@ -189,11 +202,6 @@ namespace myTunes
             {
                 DragDrop.DoDragDrop(myDataGrid, (myDataGrid.Items[myDataGrid.SelectedIndex] as DataRowView)[0], DragDropEffects.Copy);
             }
-        }
-
-        private void myDataGrid_MouseMove(object sender, MouseEventArgs e)
-        {
-            startPoint = e.GetPosition(null);
         }
 
         private void myListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -211,6 +219,32 @@ namespace myTunes
                 myDataGrid.ItemsSource = allPlaylists.DefaultView;
 
             }
+        }
+
+        private void myDataGrid_PreviewMouseMove(object sender, MouseEventArgs e)
+        {
+            startPoint = e.GetPosition(null);
+        }
+
+        private void myListBox_DragOver(object sender, DragEventArgs e)
+        {
+            e.Effects = DragDropEffects.None;
+            Label playlist = (Label)sender;
+            if(playlist != null)
+            {
+                e.Effects = DragDropEffects.Copy;
+                selectedPlaylist = playlist.Content.ToString();
+            }
+        }
+
+        private void myListBox_Drop(object sender, DragEventArgs e)
+        {
+            if(e.Data.GetDataPresent(DataFormats.StringFormat))
+            {
+                int datastring = Convert.ToInt32(e.Data.GetData(DataFormats.StringFormat));
+                library.AddSongToPlaylist(datastring, selectedPlaylist);
+            }
+
         }
     }
 }

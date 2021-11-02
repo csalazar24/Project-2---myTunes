@@ -31,7 +31,7 @@
             </Button>
         </ToolBar>
 
-        <ListBox x:Name="myListBox" Grid.Column="0" Grid.Row="1" Margin="10 0" SelectionChanged="myListBox_SelectionChanged" >
+        <ListBox x:Name="myListBox" Grid.Column="0" AllowDrop="True" DragOver="myListBox_DragOver" Drop="myListBox_Drop" Grid.Row="1" Margin="10 0" SelectionChanged="myListBox_SelectionChanged" >
             <ListBox.ItemTemplate >
                 <DataTemplate >
                     <StackPanel Orientation="Horizontal" >
@@ -41,7 +41,7 @@
             </ListBox.ItemTemplate>
         </ListBox>
 
-        <DataGrid x:Name="myDataGrid" Grid.Column="1" Grid.Row="1" CanUserAddRows="False" IsReadOnly="True" SelectionMode="Single" Margin="0,0,0,40" MouseMove="myDataGrid_MouseMove"  PreviewMouseLeftButtonDown="myDataGrid_PreviewMouseLeftButtonDown" AutoGenerateColumns="False">
+        <DataGrid x:Name="myDataGrid" Grid.Column="1" Grid.Row="1" CanUserAddRows="False" IsReadOnly="True" SelectionMode="Single" Margin="0,0,0,40" MouseMove="myDataGrid_MouseMove"  PreviewMouseMove="myDataGrid_PreviewMouseMove" AutoGenerateColumns="False">
 
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Title" Binding="{Binding Path=title}" />
