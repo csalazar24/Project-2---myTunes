@@ -10,7 +10,7 @@ from the app and organized into playlists.  Music and playlist data are stored i
 | Criteria      | Teammate|
 | ----------- | ----------- |
 | Show songs from All Music and playlists     |   Christopher Salazar |
-| Songs in data grid  |       |
+| Songs in data grid  |   Gavin McCulley   |
 | Play and stop song   |     Christopher Salazar      |
 | Toolbar  |    Christopher Salazar   |
 | Add songs      |   Gavin McCulley   |
