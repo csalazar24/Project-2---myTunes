@@ -41,7 +41,7 @@
             </ListBox.ItemTemplate>
         </ListBox>
 
-        <DataGrid x:Name="myDataGrid" Grid.Column="1" Grid.Row="1" CanUserAddRows="False" IsReadOnly="True" SelectionMode="Single" Margin="0,0,0,40">
+        <DataGrid x:Name="myDataGrid" Grid.Column="1" Grid.Row="1" CanUserAddRows="False" IsReadOnly="True" SelectionMode="Single" Margin="0,0,0,40"  PreviewMouseLeftButtonDown="myDataGrid_PreviewMouseLeftButtonDown">
             <DataGrid.ContextMenu>
                 <ContextMenu>
                     <MenuItem Header="Play" Click="playButton_Click"></MenuItem>

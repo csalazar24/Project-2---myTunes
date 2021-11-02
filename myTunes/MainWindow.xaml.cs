@@ -29,7 +29,7 @@ namespace myTunes
         private readonly MediaPlayer mediaPlayer = new MediaPlayer();
         private List<Playlist> playlists = new List<Playlist>();
         private DataSet music = new DataSet();
-
+        private Point startPoint;
         private Playlist currentPlaylist;
         public MainWindow()
         {
@@ -171,6 +171,21 @@ namespace myTunes
                         music.Tables["song"].Rows.Remove(row);
                     }
                 }
+            }
+        }
+
+        private void myDataGrid_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            var mousePos = e.GetPosition(null);
+            Vector diff = startPoint - mousePos;
+
+            if (e.LeftButton == MouseButtonState.Pressed &&
+                (Math.Abs(diff.X) > SystemParameters.MinimumHorizontalDragDistance ||
+                Math.Abs(diff.Y) > SystemParameters.MinimumVerticalDragDistance))
+            {
+
+                DragDrop.DoDragDrop(myDataGrid, (myDataGrid.Items[myDataGrid.SelectedIndex] as DataRowView)[0], DragDropEffects.Copy);
+
             }
         }
     }
