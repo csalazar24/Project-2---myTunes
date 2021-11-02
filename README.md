@@ -15,15 +15,15 @@ from the app and organized into playlists.  Music and playlist data are stored i
 | Toolbar  |    Christopher Salazar   |
 | Add songs      |   Gavin McCulley   |
 | Create playlist and add songs  |    Christopher Salazar   |
-| Delete songs    |       |
+| Delete songs    |   Christopher Salazar & Gavin McCulley   |
 | Changes saved |  Christopher Salazar    |
 | Windows resizable    |  Gavin McCulley  |
 | About dialog box   |    Christopher Salazar    |
 | Use of MusicRepo   |  Christopher Salazar & Gavin McCulley  |
 | Coding practices   |  Christopher Salazar & Gavin McCulley  |
-| Rename and delete playlist   |   |
+| Rename and delete playlist   | Christopher Salazar & Gavin McCulley  |
 | Control template/styles for Play and Stop buttons   |   Christopher Salazar    |
-| Search for song   |     |
+| Search for song   |  N/A  |
 | Git usage   |   Christopher Salazar & Gavin McCulley   |
 
 Christopher ~
