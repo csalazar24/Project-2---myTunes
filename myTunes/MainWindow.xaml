@@ -41,7 +41,15 @@
             </ListBox.ItemTemplate>
         </ListBox>
 
-        <DataGrid x:Name="myDataGrid" Grid.Column="1" Grid.Row="1" CanUserAddRows="False" IsReadOnly="True" SelectionMode="Single" Margin="0,0,0,40" MouseMove="myDataGrid_MouseMove"  PreviewMouseLeftButtonDown="myDataGrid_PreviewMouseLeftButtonDown">
+        <DataGrid x:Name="myDataGrid" Grid.Column="1" Grid.Row="1" CanUserAddRows="False" IsReadOnly="True" SelectionMode="Single" Margin="0,0,0,40" MouseMove="myDataGrid_MouseMove"  PreviewMouseLeftButtonDown="myDataGrid_PreviewMouseLeftButtonDown" AutoGenerateColumns="False">
+
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Title" Binding="{Binding Path=title}" />
+                <DataGridTextColumn Header="Artist" Binding="{Binding Path=artist}" />
+                <DataGridTextColumn Header="Album" Binding="{Binding Path=album}" />
+                <DataGridTextColumn Header="Genre" Binding="{Binding Path=genre}" />
+            </DataGrid.Columns>
+
             <DataGrid.ContextMenu>
                 <ContextMenu>
                     <MenuItem Header="Play" Click="playButton_Click"></MenuItem>
