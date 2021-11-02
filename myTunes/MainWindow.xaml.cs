@@ -27,7 +27,8 @@ namespace myTunes
     {
         private readonly MusicRepo library;
         private readonly MediaPlayer mediaPlayer = new MediaPlayer();
-        private List<Playlist> playlists = new List<Playlist>();
+        private List<string> playlists = new List<string>();
+       // private ObservableCollection<string> playlists;
         private DataSet music = new DataSet();
         private Point startPoint;
         private Playlist currentPlaylist;
@@ -48,7 +49,11 @@ namespace myTunes
             // Places music from music.xml into the data grid
             music.ReadXmlSchema("music.xsd");
             music.ReadXml("music.xml");
-            myDataGrid.ItemsSource = music.Tables["song"].DefaultView;
+
+            playlists = new List<string>(library.Playlists);
+            playlists.Insert(0, "All Music");
+            myDataGrid.ItemsSource = library.Songs.DefaultView;
+            myListBox.ItemsSource = playlists;
         }
 
         private class Playlist
@@ -58,10 +63,10 @@ namespace myTunes
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            var allMusic = new Playlist { Name = "All Music" };
-            playlists.Add(allMusic);
-            playlists.AddRange(library.Playlists.Select(playlist => new Playlist { Name = playlist }));
-            myListBox.ItemsSource = playlists;
+        //    var allMusic = new Playlist { Name =  };
+        //    playlists.Add("All Music");
+        //    playlists.AddRange(library.Playlists.Select(playlist => new Playlist { Name = playlist }));
+        //    myListBox.ItemsSource = playlists;
         }
 
         private void infoButton_Click(object sender, RoutedEventArgs e)
@@ -78,13 +83,11 @@ namespace myTunes
 
             if (library.AddPlaylist(result))
             {
-                playlists.Clear();
-                playlists = new List<Playlist>();
+                //playlists = new List<Playlist>();
 
                 var allMusic = new Playlist { Name = "All Music"};
                 currentPlaylist = allMusic;
-                playlists.Add(allMusic);
-                playlists.AddRange(library.Playlists.Select(playlist => new Playlist { Name = playlist}));
+                playlists.Add(result);
                 myListBox.ItemsSource = playlists;
             }
         }
@@ -191,6 +194,23 @@ namespace myTunes
         private void myDataGrid_MouseMove(object sender, MouseEventArgs e)
         {
             startPoint = e.GetPosition(null);
+        }
+
+        private void myListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            //myDataGrid.ItemsSource = library.Playlists[0];
+            string selectedplaylist = myListBox.SelectedItem as string;
+
+            if (selectedplaylist == "All Music")
+            {
+                myDataGrid.ItemsSource = music.Tables["song"].DefaultView;
+            }
+            else
+            {
+                DataTable allPlaylists = library.SongsForPlaylist(selectedplaylist);
+                myDataGrid.ItemsSource = allPlaylists.DefaultView;
+
+            }
         }
     }
 }

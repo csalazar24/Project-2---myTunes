@@ -31,11 +31,11 @@
             </Button>
         </ToolBar>
 
-        <ListBox x:Name="myListBox" Grid.Column="0" Grid.Row="1" Margin="10 0" >
+        <ListBox x:Name="myListBox" Grid.Column="0" Grid.Row="1" Margin="10 0" SelectionChanged="myListBox_SelectionChanged" >
             <ListBox.ItemTemplate >
                 <DataTemplate >
                     <StackPanel Orientation="Horizontal" >
-                        <Label Content="{Binding Name}" />
+                        <Label Content="{Binding}" />
                     </StackPanel>
                 </DataTemplate>
             </ListBox.ItemTemplate>
