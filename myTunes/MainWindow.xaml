@@ -7,11 +7,13 @@
         mc:Ignorable="d"
         Loaded="Window_Loaded"
         Closing="Window_Closing"
-        Title="MyTunes" Height="500" Width="800">
+        Title="MyTunes" Height="500" Width="800" MinWidth="400" MinHeight="300">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="auto"/>
-            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="411*"/>
+            <ColumnDefinition Width="193*"/>
+            <ColumnDefinition Width="172*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
@@ -19,7 +21,7 @@
             <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
 
-        <ToolBar Grid.Row="0" Grid.ColumnSpan="2">
+        <ToolBar Grid.Row="0" Grid.ColumnSpan="4">
             <Button x:Name="openButton" ToolTip="Open File" Click="openButton_Click">
                 <Image Source="File.png" Width="32" Height="32"/>
             </Button>
@@ -31,7 +33,7 @@
             </Button>
         </ToolBar>
 
-        <ListBox x:Name="myListBox" Grid.Column="0" Grid.Row="1" Margin="10 0" >
+        <ListBox x:Name="myListBox" Grid.Column="0" Grid.Row="1" Margin="10,0,10,0" >
             <ListBox.ItemTemplate >
                 <DataTemplate >
                     <StackPanel Orientation="Horizontal" >
@@ -41,7 +43,7 @@
             </ListBox.ItemTemplate>
         </ListBox>
 
-        <DataGrid x:Name="myDataGrid" Grid.Column="1" Grid.Row="1" CanUserAddRows="False" IsReadOnly="True" SelectionMode="Single" Margin="0,0,0,40"  PreviewMouseLeftButtonDown="myDataGrid_PreviewMouseLeftButtonDown">
+        <DataGrid x:Name="myDataGrid" Grid.Column="1" Grid.Row="1" CanUserAddRows="False" IsReadOnly="True" SelectionMode="Single" Margin="0,0,0,40" Grid.ColumnSpan="3">
             <DataGrid.ContextMenu>
                 <ContextMenu>
                     <MenuItem Header="Play" Click="playButton_Click"></MenuItem>
@@ -50,9 +52,9 @@
             </DataGrid.ContextMenu>
 
         </DataGrid>
-        
 
-        <WrapPanel Grid.Row="1" Margin="10,10,10,10" Grid.Column="1" VerticalAlignment="Bottom" >
+
+        <WrapPanel Grid.Row="1" Margin="10,0,10,10" Grid.Column="1" VerticalAlignment="Bottom" Grid.ColumnSpan="3" >
             <Button x:Name="playButton"  Content="Play" Width="70" Height="25" Margin="0,0,10,0" Click="playButton_Click" VerticalAlignment="Stretch"/>
             <Button x:Name="stopButton" Content="Stop" Width="70" Height="25" Margin="0,0,0,0" Click="stopButton_Click"/>
         </WrapPanel>

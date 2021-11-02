@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:myTunes"
         mc:Ignorable="d"
-        Title="Confirmation" Height="174" Width="319">
+        Title="Confirmation" Height="174" Width="319" ResizeMode="NoResize">
     <Grid>
         <StackPanel>
             <Label Margin="30,40,30,0">Are you sure you want to remove this song?</Label>
