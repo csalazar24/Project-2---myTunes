@@ -39,6 +39,12 @@
                     </StackPanel>
                 </DataTemplate>
             </ListBox.ItemTemplate>
+            <ListBox.ContextMenu>
+                <ContextMenu>
+                    <MenuItem Header="rename" Click="rename_Click"></MenuItem>
+                    <MenuItem Name="deletePlaylist" Header="Delete" Click="deletePlaylist_Click"></MenuItem>
+                </ContextMenu>
+            </ListBox.ContextMenu>
         </ListBox>
 
         <DataGrid x:Name="myDataGrid" Grid.Column="1" Grid.Row="1" AllowDrop="False" CanUserAddRows="False" IsReadOnly="True" SelectionMode="Single" Margin="0,0,0,40" MouseMove="myDataGrid_MouseMove"  PreviewMouseMove="myDataGrid_PreviewMouseMove" AutoGenerateColumns="False">

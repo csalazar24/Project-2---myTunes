@@ -27,7 +27,6 @@ namespace myTunes
     {
         private readonly MusicRepo library;
         private readonly MediaPlayer mediaPlayer = new MediaPlayer();
-        //private List<string> playlists = new List<string>();
         private ObservableCollection<string> playlists;
         private DataSet music = new DataSet();
         private Point startPoint;
@@ -224,6 +223,18 @@ namespace myTunes
                 int songId = Convert.ToInt32(e.Data.GetData(DataFormats.StringFormat));
                 library.AddSongToPlaylist(songId, selectedPlaylist);
             }
+        }
+
+        private void deletePlaylist_Click(object sender, RoutedEventArgs e)
+        {
+            library.DeletePlaylist(myListBox.SelectedItem.ToString());
+            playlists.Remove(myListBox.SelectedItem.ToString());
+            myListBox.ItemsSource = playlists;
+        }
+
+        private void rename_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
