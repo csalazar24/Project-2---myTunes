@@ -112,7 +112,7 @@ namespace myTunes
 
                 // Select newly added item in data grid
                 myDataGrid.Focus();
-                myDataGrid.SelectedItem = myDataGrid.Items.Count - 1;
+                myDataGrid.SelectedIndex = myDataGrid.Items.Count - 1;
                 myDataGrid.SelectedItem = myDataGrid.SelectedIndex;
             }
         }
