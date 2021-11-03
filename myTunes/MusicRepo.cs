@@ -370,7 +370,7 @@ namespace myTunes
                 ", playlist=" + playlist);
 
             // Search the primary key for this playlist and delete it from the playlist table
-            DataTable table = musicDataSet.Tables["playlist_song"];
+                DataTable table = musicDataSet.Tables["playlist_song"];
             ArrayList primaryKeys = new ArrayList();
 
             // Order of keys must match column order

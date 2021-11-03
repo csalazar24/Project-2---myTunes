@@ -100,14 +100,19 @@ namespace myTunes
             if(result == true)
             {
                 Song s = library.AddSong(openFileDialog.FileName.ToString());
-                library.Save();
-                music.Clear();
-                music.ReadXml("music.xml");
+                if(myListBox.SelectedItem.ToString() == "All Music")
+                {
+                    myDataGrid.ItemsSource = library.Songs.DefaultView;
+                }
+                else
+                {
+                    library.AddSongToPlaylist(s.Id, myListBox.SelectedItem.ToString());
+                    myDataGrid.ItemsSource = library.SongsForPlaylist(myListBox.SelectedItem.ToString()).DefaultView;
+                }
 
                 // Select newly added item in data grid
                 myDataGrid.Focus();
-                DataRow row = music.Tables["song"].Rows.Find(s.Id);
-                myDataGrid.SelectedIndex = music.Tables["song"].Rows.IndexOf(row);
+                myDataGrid.SelectedItem = myDataGrid.Items.Count - 1;
                 myDataGrid.SelectedItem = myDataGrid.SelectedIndex;
             }
         }
@@ -133,28 +138,6 @@ namespace myTunes
             library.Save();
         }
 
-        private void removeButton_Click2(object sender, RoutedEventArgs e)
-        {
-            RemoveSongWindow confirmRemove = new RemoveSongWindow();
-            confirmRemove.ShowDialog();
-
-            if (confirmRemove.RemoveConfirmation)
-            {
-                DataRowView rowView = myDataGrid.SelectedItem as DataRowView;
-                if (rowView != null)
-                {
-                    int songId = Convert.ToInt32(rowView.Row.ItemArray[0]);
-                    library.RemoveSongFromPlaylist(myDataGrid.SelectedIndex + 1, songId, currentPlaylist.Name);
-                    //library.DeleteSong(songId);
-                    myDataGrid.ItemsSource = null;
-                }
-            }
-            else
-            {
-                e.Handled = true;
-            }
-        }
-
         private void removeButton_Click(object sender, RoutedEventArgs e)
         {
             
@@ -178,8 +161,6 @@ namespace myTunes
                 }
             }
         }
-
-
 
         private void myDataGrid_MouseMove(object sender, MouseEventArgs e)
         {
