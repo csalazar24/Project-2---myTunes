@@ -53,7 +53,7 @@
             <DataGrid.ContextMenu>
                 <ContextMenu>
                     <MenuItem Header="Play" Click="playButton_Click"></MenuItem>
-                    <MenuItem Name="removeButton"  Header="Remove" Click="removeButton_Click"></MenuItem>
+                    <MenuItem Name="removeButton" Header="Remove" Click="removeButton_Click"></MenuItem>
                 </ContextMenu>
             </DataGrid.ContextMenu>
 

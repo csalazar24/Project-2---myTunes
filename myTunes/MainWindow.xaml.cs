@@ -171,12 +171,14 @@ namespace myTunes
             {
                 myDataGrid.ItemsSource = library.Songs.DefaultView;
                 myDataGrid.IsReadOnly = false;
+                removeButton.Header = "Remove";
             }
             else
             {
                 DataTable allPlaylists = library.SongsForPlaylist(selectedplaylist);
                 myDataGrid.ItemsSource = allPlaylists.DefaultView;
                 myDataGrid.IsReadOnly = true;
+                removeButton.Header = "Remove from Playlist";
             }
         }
 
