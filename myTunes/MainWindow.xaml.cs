@@ -194,7 +194,7 @@ namespace myTunes
             Vector diff = startPoint - mousePos;
 
             // Start the drag-drop if mouse has moved far enough
-            if (e.LeftButton == MouseButtonState.Pressed)
+            if (e.LeftButton == MouseButtonState.Pressed && myDataGrid.SelectedItem != null)
             {
                 // Initiate dragging the song from the data grid
                 System.Data.DataRowView song = (DataRowView)myDataGrid.SelectedItem;
