@@ -162,17 +162,6 @@ namespace myTunes
             }
         }
 
-        private void myDataGrid_MouseMove(object sender, MouseEventArgs e)
-        {
-            var mousePos = e.GetPosition(null);
-            Vector diff = startPoint - mousePos;
-
-            if (e.LeftButton == MouseButtonState.Pressed)
-            {
-                DragDrop.DoDragDrop(myDataGrid, (myDataGrid.Items[myDataGrid.SelectedIndex] as DataRowView)[0], DragDropEffects.Copy);
-            }
-        }
-
         private void myListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             //myDataGrid.ItemsSource = library.Playlists[0];
@@ -193,17 +182,36 @@ namespace myTunes
 
         private void myDataGrid_PreviewMouseMove(object sender, MouseEventArgs e)
         {
+            // Store the mouse position
             startPoint = e.GetPosition(null);
+        }
+
+        private void myDataGrid_MouseMove(object sender, MouseEventArgs e)
+        {
+            // Get the current mouse position
+            Point mousePos = e.GetPosition(null);
+            Vector diff = startPoint - mousePos;
+
+            // Start the drag-drop if mouse has moved far enough
+            if (e.LeftButton == MouseButtonState.Pressed)
+            {
+                // Initiate dragging the song from the data grid
+                System.Data.DataRowView song = (DataRowView)myDataGrid.SelectedItem;
+                DragDrop.DoDragDrop(myDataGrid, song.Row[0].ToString(), DragDropEffects.Copy);
+            }
         }
 
         private void myListBox_DragOver(object sender, DragEventArgs e)
         {
             e.Effects = DragDropEffects.None;
-            Label playlist = (Label)sender;
-            if(playlist != null)
+            string playlist = ((Label)sender).Content.ToString();
+
+            if(e.Data.GetDataPresent(DataFormats.StringFormat) && playlist != "All Music")
             {
+                int songId = Convert.ToInt32(e.Data.GetData(DataFormats.StringFormat));
                 e.Effects = DragDropEffects.Copy;
-                selectedPlaylist = playlist.Content.ToString();
+                selectedPlaylist = playlist;
+                Console.WriteLine(selectedPlaylist);
             }
         }
 
@@ -211,8 +219,8 @@ namespace myTunes
         {
             if(e.Data.GetDataPresent(DataFormats.StringFormat))
             {
-                int datastring = Convert.ToInt32(e.Data.GetData(DataFormats.StringFormat));
-                library.AddSongToPlaylist(datastring, selectedPlaylist);
+                int songId = Convert.ToInt32(e.Data.GetData(DataFormats.StringFormat));
+                library.AddSongToPlaylist(songId, selectedPlaylist);
             }
         }
     }
