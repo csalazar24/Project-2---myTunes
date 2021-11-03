@@ -181,11 +181,13 @@ namespace myTunes
             if (selectedplaylist == "All Music")
             {
                 myDataGrid.ItemsSource = library.Songs.DefaultView;
+                myDataGrid.IsReadOnly = false;
             }
             else
             {
                 DataTable allPlaylists = library.SongsForPlaylist(selectedplaylist);
                 myDataGrid.ItemsSource = allPlaylists.DefaultView;
+                myDataGrid.IsReadOnly = true;
             }
         }
 
