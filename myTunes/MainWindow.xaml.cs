@@ -234,7 +234,17 @@ namespace myTunes
 
         private void rename_Click(object sender, RoutedEventArgs e)
         {
+            renameWindow newPlaylistForm = new renameWindow();
+            newPlaylistForm.ShowDialog();
 
+            if (newPlaylistForm.result == true)
+            {
+                library.RenamePlaylist(myListBox.SelectedItem.ToString(), newPlaylistForm.newName);
+                playlists.Remove(myListBox.SelectedItem.ToString());
+                playlists.Add(newPlaylistForm.newName);
+                myListBox.ItemsSource = playlists;
+                myListBox.SelectedIndex = myListBox.Items.Count - 1;
+            }
         }
     }
 }
